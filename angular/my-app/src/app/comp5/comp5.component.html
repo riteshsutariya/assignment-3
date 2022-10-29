@@ -1,0 +1,30 @@
+<div class="form-container">
+    <form action="" (submit)="handleSubmit($event)">
+        <div class="input">
+            <input type="text" name="txtname" id="" [value]="form.txtname" placeholder="your name"
+                (change)="formChange($event)">
+        </div>
+        <div class="input">
+            <input type="email" name="txtemail" id="" [value]="form.txtemail" placeholder="your email"
+                (change)="formChange($event)">
+        </div>
+        <div class="input">
+            <input type="tel" name="txtcontact" id="" [value]="form.txtcontact" placeholder="your phone number"
+                (change)="formChange($event)">
+        </div>
+        <div class="input">
+            <input type="radio" name="txtgender" value="male" id="" [checked]="form.txtgender==='male'"
+                (change)="formChange($event)">male
+
+            <input type="radio" name="txtgender" value="female" id="" [checked]="form.txtgender==='female'"
+                (change)="formChange($event)">female
+        </div>
+        <div class=" input">
+            <input type="number" name="txtage" id="" [value]="form.txtage" placeholder="age"
+                (change)="formChange($event)">
+        </div>
+        <div class="input">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</div>

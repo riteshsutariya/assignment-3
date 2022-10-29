@@ -1,0 +1,13 @@
+<div>
+    <div class="select mb-2">
+        <select name="country" id="country-combo" (change)="onChange($event)">
+            <option *ngFor="let item of arr" value="{{item}}">{{item}}</option>
+        </select>
+    </div>
+    <div class="textbox mb-2">
+        <input type="text" name="" id="" [value]="currentSelection">
+    </div>
+    <div class="textarea mb-2">
+        <textarea name="" id="" cols="30" rows="10">{{currentSelection}}</textarea>
+    </div>
+</div>
