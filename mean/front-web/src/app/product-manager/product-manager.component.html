@@ -1,0 +1,30 @@
+<div class="links-container mb-4">
+    <a href="product/add">Insert Product</a>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">manufacturer</th>
+                <th scope="col">price</th>
+                <th scope="col">country of origin</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <th scope="row">{{product.p_name}}</th>
+                <td>{{product.p_manufacturer}}</td>
+                <td>{{product.p_price}}</td>
+                <td>{{product.p_countryOfOrigin}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary mx-2"><a href="product/update/{{product._id}}"
+                            style="color: white;">Update</a></button>
+                    <button type="button" class="btn btn-danger"><a href="product/delete/{{product._id}}"
+                            style="color: white;">Delete</a></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

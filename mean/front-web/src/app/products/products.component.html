@@ -1,0 +1,14 @@
+<div>
+    <div class="row mt-4">
+        <div *ngFor="let product of products" class="col-md-3 card p-2" style="margin-right: 16px;margin-bottom: 12px;">
+            <div class="card-body">
+                <h4 class="card-title">{{product.p_name}}</h4>
+                <p><span>manufacturer: </span>{{product.p_manufacturer}}</p>
+                <p class="card-text "><span>description: </span><small>{{product.p_description}}</small></p>
+                <p class="card-text"><span>country of origin: </span>{{product.p_countryOfOrigin}}</p>
+                <p><strong>{{product.p_price}}₹</strong></p>
+                <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</div>

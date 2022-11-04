@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">{{product.p_name}}</h4>
+        <p><span>manufacturer: </span>{{product.p_manufacturer}}</p>
+        <p class="card-text "><span>description: </span><small>{{product.p_description}}</small></p>
+        <p class="card-text"><span>country of origin: </span>{{product.p_countryOfOrigin}}</p>
+        <p><strong>{{product.p_price}}₹</strong></p>
+        <a href="/product/manage" class="btn btn-primary">Go Back</a>
+        <a href="#" class="btn btn-danger mx-2" (click)="deleteProduct()">Confirm Delete</a>
+    </div>
+</div>
