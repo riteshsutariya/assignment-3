@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')
+const cors = require('cors')
 require('dotenv').config()
 //database
 const database = require('./config/db')
@@ -8,6 +9,8 @@ const database = require('./config/db')
 //req body,json configuration
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+//cors
+app.use(cors())
 
 //product route
 const productRoute = require('./routes/product')

@@ -7,16 +7,12 @@ app.get('/', async (req, res) => {
     try {
         const result = await product.find()
         res.status(200).json({
-            response: {
-                data: result
-            }
+            data: result
         })
     } catch (error) {
         console.error('error get /product ', error);
         res.status(501).json({
-            response: {
-                message: 'internal server error'
-            }
+            message: 'internal server error'
         })
     }
 })
@@ -27,16 +23,14 @@ app.get('/:id', async (req, res) => {
     try {
         const result = await product.findById(p_id)
         if (result) {
-            res.status(200).send({
-                response: {
+            res.status(200).send(
+                {
                     data: result
                 }
-            })
+            )
         } else {
             res.status(404).send({
-                response: {
-                    message: 'product not found with given id!'
-                }
+                message: 'product not found with given id!'
             })
         }
     } catch (error) {
@@ -58,17 +52,13 @@ app.post('/', async (req, res) => {
         const productObj = new product({ ...newProduct })
         const result = await productObj.save()
         res.status(200).json({
-            response: {
-                message: 'product inserted successfully.',
-                data: result
-            }
+            message: 'product inserted successfully.',
+            data: result
         })
     } catch (error) {
         console.error('error post /product ', error);
         res.status(501).json({
-            response: {
-                message: 'internal server error'
-            }
+            message: 'internal server error'
         })
     }
 })
@@ -81,25 +71,19 @@ app.put('/:id', async (req, res) => {
         const result = await product.findByIdAndUpdate(p_id, updatedProduct)
         if (result) {
             res.status(200).send({
-                response: {
-                    message: 'product updated successfully.',
-                    data: result
-                }
+                message: 'product updated successfully.',
+                data: result
             })
         }
         else {
             res.status(404).send({
-                response: {
-                    data: 'something went wrong!'
-                }
+                data: 'something went wrong!'
             })
         }
     } catch (error) {
         console.error('error put /product/:id ', error);
         res.status(501).json({
-            response: {
-                message: 'internal server error'
-            }
+            message: 'internal server error'
         })
     }
 })
@@ -111,24 +95,18 @@ app.delete('/:id', async (req, res) => {
         const result = await product.findByIdAndDelete(p_id)
         if (result) {
             res.status(200).send({
-                response: {
-                    message: 'product deleted successfully.',
-                    data: result
-                }
+                message: 'product deleted successfully.',
+                data: result
             })
         } else {
             res.status(404).send({
-                response: {
-                    data: 'something went wrong!'
-                }
+                message: 'something went wrong!'
             })
         }
     } catch (error) {
         console.error('error delete /product/:id ', error);
         res.status(501).json({
-            response: {
-                message: 'internal server error'
-            }
+            message: 'internal server error'
         })
     }
 })

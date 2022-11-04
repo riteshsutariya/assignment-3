@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="angForm">
+            <div class="form-group mb-2">
+                <label for="" class="col-md-4 mb-1">product name</label>
+                <input type="text" formControlName="p_name" class="form-control" id="" [(ngModel)]="product.p_name">
+            </div>
+            <div *ngIf="angForm.controls['p_name'].errors != null && angForm.controls['p_name'].invalid && (angForm.controls['p_name'].dirty || angForm.controls['p_name'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="angForm.controls['p_name'].errors['required'] != null">
+                    Product name is required.
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="" class="col-md-4 mb-1">product manufacturer</label>
+                <input type="text" formControlName="p_manufacturer" class="form-control" id=""
+                    [(ngModel)]="product.p_manufacturer">
+            </div>
+            <div *ngIf="angForm.controls['p_manufacturer'].errors != null && angForm.controls['p_manufacturer'].invalid && (angForm.controls['p_manufacturer'].dirty || angForm.controls['p_manufacturer'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="angForm.controls['p_manufacturer'].errors['required'] != null">
+                    Product manufacturer name is required.
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="" class="col-md-4 mb-1">product price</label>
+                <input type="text" formControlName="p_price" class="form-control" id="" [(ngModel)]="product.p_price">
+            </div>
+            <div *ngIf="angForm.controls['p_price'].errors != null && angForm.controls['p_price'].invalid && (angForm.controls['p_price'].dirty || angForm.controls['p_price'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="angForm.controls['p_price'].errors['required'] != null">
+                    Product price is required.
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="" class="col-md-4 mb-1">country of origin</label>
+                <input type="text" formControlName="p_countryOfOrigin" class="form-control" id=""
+                    [(ngModel)]="product.p_countryOfOrigin">
+            </div>
+            <div *ngIf="angForm.controls['p_countryOfOrigin'].errors != null && angForm.controls['p_countryOfOrigin'].invalid && (angForm.controls['p_countryOfOrigin'].dirty || angForm.controls['p_countryOfOrigin'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="angForm.controls['p_countryOfOrigin'].errors['required'] != null">
+                    Product Name is required.
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="" class="col-md-4 mb-1">product description</label>
+                <input type="text" formControlName="p_description" class="form-control" id=""
+                    [(ngModel)]="product.p_description">
+            </div>
+
+            <div class="form-group">
+                <button (click)="updateProduct()" [disabled]="angForm.pristine || angForm.invalid"
+                    class="btn btn-primary">
+                    Update Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
