@@ -1,0 +1,14 @@
+.links{
+    margin-top:12px;
+}
+td{
+    background-color: rgb(205, 184, 225);
+    color: rgb(45, 46, 46);
+    border-bottom: .6px solid rgb(58, 47, 223);
+    padding: 2.4px;
+}
+th{
+    padding: 3px;
+    background-color: aqua;
+    border-bottom: 1.4px solid black;
+}

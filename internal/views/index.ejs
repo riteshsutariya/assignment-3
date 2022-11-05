@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vehicle list</title>
+    <link rel="stylesheet" href="/styles/index.css" type="text/css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Vehicle List</h2>
+        </div>
+        <%if(typeof data==='undefined' ) {%>
+            <p>Data not available</p>
+            <%}else{%>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>brand</th>
+                            <th>category</th>
+                            <th>picture</th>
+                            <th>price</th>
+                            <th>depreciation</th>
+                            <th>number of years</th>
+                            <th>total price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%data.forEach(item=>{
+                            %>
+                            <tr>
+                                <td>
+                                    <%=item.v_brand%>
+                                </td>
+                                <td>
+                                    <%=item.category.c_name%>
+                                </td>
+                                <td>
+                                    <img height="50" width="80" src="/uploads/<%=item.v_picture%>"
+                                        alt="<%=item.v_brand%>">
+                                </td>
+                                <td>
+                                    <%=item.v_price%>
+                                </td>
+                                <td>
+                                    <%=item.v_depreciation%>
+                                </td>
+                                <td>
+                                    <%=item.v_numberOfYears%>
+                                </td>
+                                <td>
+                                    <%=item.v_totalPrice%>
+                                </td>
+                            </tr>
+                            <% })%>
+
+
+                    </tbody>
+                </table>
+                <%}%>
+    </div>
+    <div class="links">
+        <a href="/vehicle/insert">insert vehicle</a>
+    </div>
+</body>
+
+</html>
