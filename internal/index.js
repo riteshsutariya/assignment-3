@@ -1,5 +1,6 @@
 const express = require('express')
 require('dotenv').config();
+const path = require('path')
 //database
 const db = require('./config/db')
 const app = express();
@@ -13,14 +14,16 @@ const vehicleRoute = require('./routes/vehicle')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 //setting view
-app.set('view', 'ejs')
+app.set('view engine', 'ejs')
+app.use(express.static(__dirname + '/public'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 //setting routes
 app.use('/category', categoryRoute)
 app.use('/vehicle', vehicleRoute)
 
 app.get('/', (req, res) => {
-    res.send('default')
+    res.render('index')
 })
 
 app.listen(PORT, () => {

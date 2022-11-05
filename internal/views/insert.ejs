@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Vehicle</title>
+    <link rel="stylesheet" href="/styles/insert.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="/vehicle" method="post" enctype="multipart/form-data">
+                <div class="input">
+                    <span class="label">vehicle brand: </span>
+                    <input type="text" name="v_brand" id="" required>
+                </div>
+                <div class="input">
+                    <span class="label">vehicle category: </span>
+                    <select name="category" id="">
+                        <%if(typeof categories!=='undefined' ){%>
+                            <%categories.forEach(category=>{
+                                %>
+                                <option value="<%=category._id%>">
+                                    <%=category.c_name%>
+                                </option>
+                                <% })%>
+                                    <%}else{%>
+                                        <option value="null">not available</option>
+                                        <%}%>
+                    </select>
+                </div>
+                <div class="input">
+                    <span class="label">vehicle picture: </span>
+                    <input type="file" name="v_picture" id="" required>
+                    <div class="error">
+                        <%if(typeof pictureError!=='undefined' ){%>
+                            <p>
+                                <%=pictureError%>
+                            </p>
+                            <%}%>
+                    </div>
+                </div>
+                <div class="input">
+                    <span class="label">vehicle price: </span>
+                    <input type="number" name="v_price" id="v_price" onchange="calculateTotalPrice()" required>
+                </div>
+                <div class="input">
+                    <span class="label">depreciation: </span>
+                    <input type="number" name="v_depreciation" id="v_depreciation" onchange="calculateTotalPrice()"
+                        required>
+                </div>
+                <div class="input">
+                    <span class="label">number of years: </span>
+                    <input type="number" name="v_numberOfYears" id="v_numberOfYears" onchange="calculateTotalPrice()"
+                        max="10" required>
+                </div>
+                <div class="input">
+                    <span class="label">total price: </span>
+                    <input type="number" name="v_totalPrice" id="v_totalPrice" readonly>
+                </div>
+                <div class="submit-btn">
+                    <input type="submit" value="insert">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="links">
+        <a href="/vehicle">back to list</a>
+    </div>
+</body>
+
+<script>
+    let vehiclePrice = document.getElementById("v_price")
+    let totalPriceElement = document.getElementById("v_totalPrice")
+    let depreciationElement = document.getElementById("v_depreciation")
+    let numberOfYears = document.getElementById("v_numberOfYears")
+
+    function calculateTotalPrice() {
+        console.log("depreciation value: ", depreciationElement.value)
+        console.log("numberOfYear value: ", numberOfYears.value)
+
+        totalPriceElement.value = vehiclePrice.value - ((depreciationElement.value ? depreciationElement.value : 0) * (numberOfYears.value ? numberOfYears.value : 1));
+    }
+</script>
+
+</html>
