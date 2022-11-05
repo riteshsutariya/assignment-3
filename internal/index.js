@@ -23,7 +23,7 @@ app.use('/category', categoryRoute)
 app.use('/vehicle', vehicleRoute)
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.redirect('vehicle')
 })
 
 app.listen(PORT, () => {
