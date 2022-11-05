@@ -4,11 +4,13 @@ const _ = require('lodash')
 //multer-for file upload
 const multer = require('multer')
 
-const vehicle = require('../models/vehicle')
-//get all vehicles data
+const Vehicle = require('../models/vehicle')
+//get all Vehicles data
 app.get('/', async (req, res) => {
     try {
-        const result = await vehicle.find();
+        const result = await Vehicle.find().populate('category');
+
+        // const CategoryObj = await Category.findById(result.v_Category)
         res.status(200).json({
             data: result
         })
@@ -20,16 +22,34 @@ app.get('/', async (req, res) => {
     }
 })
 
-//insert vehicle
+app.get('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+        const result = await Vehicle.findById(id).populate('category');
+        console.log("result: ", result)
+
+        // const CategoryObj = await Category.findById(result.v_Category)
+        res.status(200).json({
+            data: result
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(501).json({
+            message: 'internal server error'
+        })
+    }
+})
+
+//insert Vehicle
 app.post('/', async (req, res) => {
-    const vehicleObj = req.body;
-    console.log(vehicleObj)
-    if (!_.isEmpty(vehicleObj)) {
+    const VehicleObj = req.body;
+    console.log(VehicleObj)
+    if (!_.isEmpty(VehicleObj)) {
         try {
-            const newRecord = new vehicle({ ...vehicleObj })
+            const newRecord = new Vehicle({ ...VehicleObj })
             await newRecord.save()
             res.status(200).json({
-                message: 'vehicle inserted successfully.'
+                message: 'Vehicle inserted successfully.'
             })
         } catch (error) {
             console.log(error)

@@ -1,8 +1,11 @@
 const mongoose = require('mongoose')
-
+const category = require('./category')
 const vehicleSchema = new mongoose.Schema({
     v_brand: String,
-    v_category: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'category'
+    },
     v_picture: String,
     v_price: Number,
     v_depreciation: Number,
@@ -10,6 +13,6 @@ const vehicleSchema = new mongoose.Schema({
     v_totalPrice: Number
 })
 
-const vehicleModel = new mongoose.model('vehicle', vehicleSchema, 'vehicles')
+const Vehicle = new mongoose.model('vehicle', vehicleSchema, 'vehicles')
 
-module.exports = vehicleModel
+module.exports = Vehicle

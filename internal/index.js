@@ -11,6 +11,7 @@ const vehicleRoute = require('./routes/vehicle')
 
 //body parser configuration
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 //setting view
 app.set('view', 'ejs')
 
